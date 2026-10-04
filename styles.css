@@ -1,0 +1,149 @@
+*{
+    box-sizing: border-box;
+}
+
+/*default page*/ 
+
+body{
+
+    margin: 0;
+    background-color: #182230;
+    color: #eeeeee;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+header {
+    background-color: #101720;
+    padding: 25px;
+    text-align: center;
+}
+
+h1{ /* extra space above header */
+
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/*content is centered and widith is limited for 21:9 ratios*/
+main{
+
+    max-width: 1000px;
+    margin: 0 auto;
+    padding:25px;
+}
+
+/*search label gets it only line*/
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* search field fills available width */
+#search_input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #222222;
+    font-size: 16px;
+}
+
+#search_input:focus-visible {
+    outline: 3px solid #9ac7ff;
+    outline-offset: 3px;
+}
+
+#command_details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #243244;
+    border: 1px solid #8393a7;
+    border-radius: 5px;
+}
+
+/* terminal appearance for the syntax */
+pre {
+    background-color: #101720;
+    color: #c6edb0;
+    padding: 15px;
+    border-radius: 5px;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+code{
+    font-family: Consolas, monospace;
+
+}
+
+footer{
+
+    padding: 20px;
+    text-align: center;
+    color: #cccccc;
+
+}
+
+
+
+.command_grid{
+
+    display:grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px; 
+
+}
+
+/* button appearance, only contains the command name */
+.command_card {
+   padding: 18px 10px;
+    background-color: #eeeeee;
+    color: #222222;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.command_card strong {
+    display: block;
+    margin: 0;
+    font-family: Consolas, monospace;
+}
+
+.command_card:hover { /* hightlight function */ 
+
+    background-color: #dddddd;
+}
+
+.command_card:focus-visible{ /* keyboard focus */
+    outline: 3px solid #2457a7;
+    outline-offset: 3px;
+}
+
+/*leaves a space above the details while scrolling */
+#command_details {
+    scroll-margin-top: 20px;
+}
+
+
+@media (max-width: 600px){
+    main{
+        padding: 15px;
+    }
+    header{
+        padding: 20px 15px;
+    }
+
+    #command_details{
+        padding: 15px;
+    }
+}

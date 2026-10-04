@@ -1,0 +1,362 @@
+[
+  {
+    "name": "ls",
+    "category": "Files and directories",
+    "summary": "List directory contents",
+    "description": " List files and directories in the current directory or a path you specify.",
+    "syntax": "ls [options] [path]",
+    "examples": [
+      {
+        "code": "ls -l",
+        "explanation": "Display a detailed listing with permissions, ownership, size, and modification time."
+      },
+      {
+        "code": "ls -a",
+        "explanation": "Include hidden names that begin with a dot."
+      }
+    ],
+    "note": "The lowercase letter l in -l means long format. The digit 1 in -1 puts one entry on each line."
+  },
+  {
+    "name": "pwd",
+    "category": "Files and directories",
+    "summary": "Show your location",
+    "description": "Print the path of your current working directory.",
+    "syntax": "pwd [options]",
+    "examples": [
+      {
+        "code": "pwd",
+        "explanation": "Show the current directory path."
+      },
+      {
+        "code": "pwd -P",
+        "explanation": "Show the physical path, resolving symbolic links."
+      }
+    ],
+    "note": "An absolute path starts at /, the root directory."
+  },
+  {
+    "name": "cd",
+    "category": "Files and directories",
+    "summary": "Change directories",
+    "description": "Move the shell into a different working directory.",
+    "syntax": "cd [directory]",
+    "examples": [
+      {
+        "code": "cd ..",
+        "explanation": "Move up to the parent directory."
+      },
+      {
+        "code": "cd ~",
+        "explanation": "Go to your home directory."
+      }
+    ],
+    "note": "cd is a shell built-in. Your home directory (~) is different from the root directory (/)."
+  },
+  {
+    "name": "mkdir",
+    "category": "Files and directories",
+    "summary": "Create directories",
+    "description": "Create a directory or a hierarchy of directories.",
+    "syntax": "mkdir [options] directory",
+    "examples": [
+      {
+        "code": "mkdir Projects",
+        "explanation": "Create a directory named Projects."
+      },
+      {
+        "code": "mkdir -p Projects/Site/Images",
+        "explanation": "Create the nested path and any missing parent directories."
+      }
+    ],
+    "note": "Without -p, the parent directory must already exist."
+  },
+  {
+    "name": "cp",
+    "category": "Files and directories",
+    "summary": "Copy files and directories",
+    "description": "Copy a file, or recursively copy a directory and its contents.",
+    "syntax": "cp [options] source destination",
+    "examples": [
+      {
+        "code": "cp notes.txt backup.txt",
+        "explanation": "Copy notes.txt to backup.txt."
+      },
+      {
+        "code": "cp -r Projects ProjectsBackup",
+        "explanation": "Copy Projects and its contents into ProjectsBackup."
+      }
+    ],
+    "note": "If the destination directory already exists, the source is copied inside it. Use -i to ask before overwriting files."
+  },
+  {
+    "name": "mv",
+    "category": "Files and directories",
+    "summary": "Move or rename items",
+    "description": "Move files and directories to a new location, or give them a new name.",
+    "syntax": "mv [options] source destination",
+    "examples": [
+      {
+        "code": "mv draft.txt final.txt",
+        "explanation": "Rename draft.txt to final.txt."
+      },
+      {
+        "code": "mv final.txt Documents/",
+        "explanation": "Move the file into an existing Documents directory."
+      }
+    ],
+    "note": "A move can overwrite an existing destination file. Use -i to request confirmation."
+  },
+  {
+    "name": "rm",
+    "category": "Files and directories",
+    "summary": "Remove files",
+    "description": "Remove a file or, with the recursive option, a directory tree.",
+    "syntax": "rm [options] file",
+    "examples": [
+      {
+        "code": "rm -i draft.txt",
+        "explanation": "Ask for confirmation before removing draft.txt."
+      },
+      {
+        "code": "rm -ri old-notes/",
+        "explanation": "Recursively remove a directory with interactive prompts."
+      }
+    ],
+    "note": "rm does not move files to a recycle bin. Check the path before confirming deletion."
+  },
+  {
+    "name": "find",
+    "category": "Files and directories",
+    "summary": "Find files by criteria",
+    "description": "Search a directory tree for files and directories that match conditions.",
+    "syntax": "find [path] [expression]",
+    "examples": [
+      {
+        "code": "find . -name \"*.txt\"",
+        "explanation": "Find names ending in .txt under the current directory."
+      },
+      {
+        "code": "find . -type d",
+        "explanation": "List directories under the current directory, including the starting directory."
+      }
+    ],
+    "note": "Quote wildcard patterns so find, rather than your shell, interprets them."
+  },
+  {
+    "name": "cat",
+    "category": "Text tools",
+    "summary": "Display file contents",
+    "description": "Write the contents of one or more files to standard output.",
+    "syntax": "cat [options] [file]",
+    "examples": [
+      {
+        "code": "cat notes.txt",
+        "explanation": "Display the contents of notes.txt."
+      },
+      {
+        "code": "cat -n notes.txt",
+        "explanation": "Display the file with numbered lines."
+      }
+    ],
+    "note": "cat is convenient for short text files. Use less to read longer files a screen at a time."
+  },
+  {
+    "name": "less",
+    "category": "Text tools",
+    "summary": "Read text one screen at a time",
+    "description": "Browse a text file interactively without editing it.",
+    "syntax": "less [options] file",
+    "examples": [
+      {
+        "code": "less notes.txt",
+        "explanation": "Open notes.txt for reading."
+      },
+      {
+        "code": "less -N notes.txt",
+        "explanation": "Show line numbers while browsing."
+      }
+    ],
+    "note": "Press q to quit, Space to advance, and / followed by text to search."
+  },
+  {
+    "name": "grep",
+    "category": "Text tools",
+    "summary": "Search text for a pattern",
+    "description": "Print lines that match a text pattern.",
+    "syntax": "grep [options] pattern [file]",
+    "examples": [
+      {
+        "code": "grep \"error\" log.txt",
+        "explanation": "Show lines containing the lowercase text error."
+      },
+      {
+        "code": "grep -in \"error\" log.txt",
+        "explanation": "Ignore letter case and include line numbers."
+      }
+    ],
+    "note": "Patterns are regular expressions by default. Use -F to search for literal text."
+  },
+  {
+    "name": "head",
+    "category": "Text tools",
+    "summary": "Read the start of a file",
+    "description": "Display the first lines of a text file.",
+    "syntax": "head [options] [file]",
+    "examples": [
+      {
+        "code": "head notes.txt",
+        "explanation": "Show the first 10 lines."
+      },
+      {
+        "code": "head -n 5 notes.txt",
+        "explanation": "Show the first five lines."
+      }
+    ],
+    "note": "head is useful for checking a file header without printing the whole file."
+  },
+  {
+    "name": "tail",
+    "category": "Text tools",
+    "summary": "Read the end of a file",
+    "description": "Display the last lines of a file or watch new content as it is appended.",
+    "syntax": "tail [options] [file]",
+    "examples": [
+      {
+        "code": "tail -n 5 log.txt",
+        "explanation": "Show the last five lines."
+      },
+      {
+        "code": "tail -f log.txt",
+        "explanation": "Keep watching for newly appended content."
+      }
+    ],
+    "note": "Press Ctrl+C to stop following a file with -f."
+  },
+  {
+    "name": "sort",
+    "category": "Text tools",
+    "summary": "Put lines in order",
+    "description": "Sort lines from a file or standard input.",
+    "syntax": "sort [options] [file]",
+    "examples": [
+      {
+        "code": "sort names.txt",
+        "explanation": "Sort lines using the current locale\u2019s ordering rules."
+      },
+      {
+        "code": "sort -n numbers.txt",
+        "explanation": "Compare values numerically instead of as text."
+      }
+    ],
+    "note": "sort prints its result without changing the original file by default."
+  },
+  {
+    "name": "chmod",
+    "category": "Permissions",
+    "summary": "Change access permissions",
+    "description": "Change the read, write, and execute permissions on a file or directory.",
+    "syntax": "chmod [options] mode file",
+    "examples": [
+      {
+        "code": "chmod u+x script.sh",
+        "explanation": "Add execute permission for the file owner."
+      },
+      {
+        "code": "chmod 640 notes.txt",
+        "explanation": "Allow the owner to read/write, the group to read, and others no access."
+      }
+    ],
+    "note": "Numeric permissions use read=4, write=2, and execute=1. Add values for owner, group, and others separately."
+  },
+  {
+    "name": "whoami",
+    "category": "Permissions",
+    "summary": "Show your effective username",
+    "description": "Print the username associated with your effective user ID.",
+    "syntax": "whoami",
+    "examples": [
+      {
+        "code": "whoami",
+        "explanation": "Display the effective username of the current process."
+      },
+      {
+        "code": "id -un",
+        "explanation": "Use id to display the effective username as an alternative."
+      }
+    ],
+    "note": "The effective user determines many access checks and may differ from the original login user."
+  },
+  {
+    "name": "id",
+    "category": "Permissions",
+    "summary": "View user and group IDs",
+    "description": "Display user and group identity information.",
+    "syntax": "id [options] [user]",
+    "examples": [
+      {
+        "code": "id",
+        "explanation": "Show your user ID, primary group, and group memberships."
+      },
+      {
+        "code": "id -Gn",
+        "explanation": "Show your group names."
+      }
+    ],
+    "note": "Permissions can depend on both your user identity and your group memberships."
+  },
+  {
+    "name": "ps",
+    "category": "Processes",
+    "summary": "List running processes",
+    "description": "Display a snapshot of processes and their information.",
+    "syntax": "ps [options]",
+    "examples": [
+      {
+        "code": "ps",
+        "explanation": "Show the default selection of processes associated with your user and terminal."
+      },
+      {
+        "code": "ps -ef",
+        "explanation": "Show all processes in a full-format listing on Linux."
+      }
+    ],
+    "note": "PID identifies a process. PPID identifies its parent process."
+  },
+  {
+    "name": "top",
+    "category": "Processes",
+    "summary": "Monitor processes live",
+    "description": "Display a regularly updated overview of processes and system resource use.",
+    "syntax": "top [options]",
+    "examples": [
+      {
+        "code": "top",
+        "explanation": "Open the interactive process monitor."
+      },
+      {
+        "code": "top -u \"$USER\"",
+        "explanation": "Show processes belonging to your current username."
+      }
+    ],
+    "note": "Press q to quit. CPU and memory figures help identify busy processes."
+  },
+  {
+    "name": "kill",
+    "category": "Processes",
+    "summary": "Send a signal to a process",
+    "description": "Send a signal to a process identified by its process ID.",
+    "syntax": "kill [options] PID",
+    "examples": [
+      {
+        "code": "kill -TERM 1234",
+        "explanation": "Request termination of process 1234."
+      },
+      {
+        "code": "kill -l",
+        "explanation": "List signal names available in your implementation."
+      }
+    ],
+    "note": "1234 is an example PID. Look up the intended process first. SIGTERM lets a process handle the request and clean up."
+  }
+]
