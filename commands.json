@@ -12,10 +12,9 @@
       },
       {
         "code": "ls -a",
-        "explanation": "Include hidden names that begin with a dot."
+        "explanation": "Include hidden files and directories such as .bashrc"
       }
-    ],
-    "note": "The lowercase letter l in -l means long format. The digit 1 in -1 puts one entry on each line."
+    ]
   },
   {
     "name": "pwd",
@@ -26,14 +25,13 @@
     "examples": [
       {
         "code": "pwd",
-        "explanation": "Show the current directory path."
+        "explanation": "Shows the current working directory."
       },
       {
         "code": "pwd -P",
-        "explanation": "Show the physical path, resolving symbolic links."
+        "explanation": "Show the directory and it's path"
       }
-    ],
-    "note": "An absolute path starts at /, the root directory."
+    ]
   },
   {
     "name": "cd",
@@ -50,8 +48,7 @@
         "code": "cd ~",
         "explanation": "Go to your home directory."
       }
-    ],
-    "note": "cd is a shell built-in. Your home directory (~) is different from the root directory (/)."
+    ]
   },
   {
     "name": "mkdir",
@@ -66,10 +63,9 @@
       },
       {
         "code": "mkdir -p Projects/Site/Images",
-        "explanation": "Create the nested path and any missing parent directories."
+        "explanation": "Creates parent directory Projects and it's nested children."
       }
-    ],
-    "note": "Without -p, the parent directory must already exist."
+    ]
   },
   {
     "name": "cp",
@@ -84,10 +80,9 @@
       },
       {
         "code": "cp -r Projects ProjectsBackup",
-        "explanation": "Copy Projects and its contents into ProjectsBackup."
+        "explanation": "Copy Projects and its contents into ProjectsBackup. -r is a recursive flag."
       }
-    ],
-    "note": "If the destination directory already exists, the source is copied inside it. Use -i to ask before overwriting files."
+    ]
   },
   {
     "name": "mv",
@@ -98,14 +93,13 @@
     "examples": [
       {
         "code": "mv draft.txt final.txt",
-        "explanation": "Rename draft.txt to final.txt."
+        "explanation": "Renames draft.txt to final.txt."
       },
       {
         "code": "mv final.txt Documents/",
         "explanation": "Move the file into an existing Documents directory."
       }
-    ],
-    "note": "A move can overwrite an existing destination file. Use -i to request confirmation."
+    ]
   },
   {
     "name": "rm",
@@ -115,15 +109,14 @@
     "syntax": "rm [options] file",
     "examples": [
       {
-        "code": "rm -i draft.txt",
-        "explanation": "Ask for confirmation before removing draft.txt."
+        "code": "rm draft.txt",
+        "explanation": "Removes draft.txt."
       },
       {
-        "code": "rm -ri old-notes/",
-        "explanation": "Recursively remove a directory with interactive prompts."
+        "code": "rm -r Projects",
+        "explanation": "Recursively remove the Projects directory and its contents."
       }
-    ],
-    "note": "rm does not move files to a recycle bin. Check the path before confirming deletion."
+    ]
   },
   {
     "name": "find",
@@ -134,14 +127,13 @@
     "examples": [
       {
         "code": "find . -name \"*.txt\"",
-        "explanation": "Find names ending in .txt under the current directory."
+        "explanation": "Find names ending in .txt under the current directory. * is a wildcard."
       },
       {
         "code": "find . -type d",
         "explanation": "List directories under the current directory, including the starting directory."
       }
-    ],
-    "note": "Quote wildcard patterns so find, rather than your shell, interprets them."
+    ]
   },
   {
     "name": "cat",
@@ -158,8 +150,7 @@
         "code": "cat -n notes.txt",
         "explanation": "Display the file with numbered lines."
       }
-    ],
-    "note": "cat is convenient for short text files. Use less to read longer files a screen at a time."
+    ]
   },
   {
     "name": "less",
@@ -176,8 +167,7 @@
         "code": "less -N notes.txt",
         "explanation": "Show line numbers while browsing."
       }
-    ],
-    "note": "Press q to quit, Space to advance, and / followed by text to search."
+    ]
   },
   {
     "name": "grep",
@@ -194,8 +184,7 @@
         "code": "grep -in \"error\" log.txt",
         "explanation": "Ignore letter case and include line numbers."
       }
-    ],
-    "note": "Patterns are regular expressions by default. Use -F to search for literal text."
+    ]
   },
   {
     "name": "head",
@@ -210,10 +199,9 @@
       },
       {
         "code": "head -n 5 notes.txt",
-        "explanation": "Show the first five lines."
+        "explanation": "Show the first 5 lines."
       }
-    ],
-    "note": "head is useful for checking a file header without printing the whole file."
+    ]
   },
   {
     "name": "tail",
@@ -224,14 +212,13 @@
     "examples": [
       {
         "code": "tail -n 5 log.txt",
-        "explanation": "Show the last five lines."
+        "explanation": "Show the last 5 lines."
       },
       {
         "code": "tail -f log.txt",
-        "explanation": "Keep watching for newly appended content."
+        "explanation": "displays the most recent lines added, as they appear."
       }
-    ],
-    "note": "Press Ctrl+C to stop following a file with -f."
+    ]
   },
   {
     "name": "sort",
@@ -242,14 +229,13 @@
     "examples": [
       {
         "code": "sort names.txt",
-        "explanation": "Sort lines using the current locale\u2019s ordering rules."
+        "explanation": "Sort files alphabetically."
       },
       {
         "code": "sort -n numbers.txt",
-        "explanation": "Compare values numerically instead of as text."
+        "explanation": "Sorts values numerically instead of as text."
       }
-    ],
-    "note": "sort prints its result without changing the original file by default."
+    ]
   },
   {
     "name": "chmod",
@@ -266,8 +252,7 @@
         "code": "chmod 640 notes.txt",
         "explanation": "Allow the owner to read/write, the group to read, and others no access."
       }
-    ],
-    "note": "Numeric permissions use read=4, write=2, and execute=1. Add values for owner, group, and others separately."
+    ]
   },
   {
     "name": "whoami",
@@ -284,8 +269,7 @@
         "code": "id -un",
         "explanation": "Use id to display the effective username as an alternative."
       }
-    ],
-    "note": "The effective user determines many access checks and may differ from the original login user."
+    ]
   },
   {
     "name": "id",
@@ -302,8 +286,7 @@
         "code": "id -Gn",
         "explanation": "Show your group names."
       }
-    ],
-    "note": "Permissions can depend on both your user identity and your group memberships."
+    ]
   },
   {
     "name": "ps",
@@ -320,8 +303,7 @@
         "code": "ps -ef",
         "explanation": "Show all processes in a full-format listing on Linux."
       }
-    ],
-    "note": "PID identifies a process. PPID identifies its parent process."
+    ]
   },
   {
     "name": "top",
@@ -338,8 +320,7 @@
         "code": "top -u \"$USER\"",
         "explanation": "Show processes belonging to your current username."
       }
-    ],
-    "note": "Press q to quit. CPU and memory figures help identify busy processes."
+    ]
   },
   {
     "name": "kill",
@@ -356,7 +337,6 @@
         "code": "kill -l",
         "explanation": "List signal names available in your implementation."
       }
-    ],
-    "note": "1234 is an example PID. Look up the intended process first. SIGTERM lets a process handle the request and clean up."
+    ]
   }
 ]
