@@ -22,3 +22,5 @@ GPT 6 astra was used to support the creation of the JavaScript and CSS files. GP
 a co-pilot, while also assisting with the reviewing and troubleshooting. 
 VS Code's autocomplete feature was used to quickly modify portions of code and quickly output basic syntax. 
 It also made documentation much faster.  
+
+Github Link: https://github.com/LS460-1UR-FSE/3351_Project-2-
