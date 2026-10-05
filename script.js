@@ -1,25 +1,28 @@
 
 
-//HTML elements to be updated
+//HTML elements to be updated by JS
 
 const command_grid = document.querySelector('#command_grid');
 const search_status = document.querySelector('#search_status');
 const command_details = document.querySelector('#command_details');
 
+//information display elements
 const command_name = document.querySelector('#command_name');
 const command_description = document.querySelector('#command_description');
 const command_syntax = document.querySelector('#command_syntax');
 
+//displayed information is held in this element
 const command_examples = document.querySelector('#command_examples');
-//search field
+
+//search field input 
 const search_input = document.querySelector('#search_input');
 
-//store commands to search for later
+//full command list stored here so searches don't remove data
 let all_commands =[];
 
-//Display information for the selected command
-// Display the information for one selected command.
+//display command objected when button is pressed
 function show_command(command) {
+    // plain text converts into html elements
     command_name.textContent = command.name;
     command_description.textContent = command.description;
     command_syntax.textContent = command.syntax;
@@ -27,17 +30,17 @@ function show_command(command) {
     // Clear examples from the previously selected command.
     command_examples.replaceChildren();
 
-    // Create HTML elements for every example in the array.
+    // repeats for each example of a command
     command.examples.forEach(function (example) {
-        const example_block = document.createElement('pre');
+        const example_block = document.createElement('pre'); // create elements in memory
         const example_code = document.createElement('code');
         const explanation = document.createElement('p');
 
-        // Insert the example as text and add its explanation.
+        // Insert the example as text and add its explanation from JSON
         example_code.textContent = example.code;
         explanation.textContent = example.explanation;
 
-        // Put the code inside <pre>, then add both items to the page.
+        // Put the code inside <pre> to save its format and then add both items to the page.
         example_block.append(example_code);
         command_examples.append(example_block, explanation);
     });
@@ -46,27 +49,27 @@ function show_command(command) {
     command_details.hidden = false;
 
     //move focus to command that is selected
-    //keep focus from scrolling before next user instruction
     command_name.focus({ preventScroll: true });
 
-    //scroll details of command into user view
+    //bring command details into view
     command_details.scrollIntoView({ behavior: 'instant', block: 'start'    });
 
 }
 
-//create button for commands in array
+//builds grid for full command list or searched list 
 function display_commands(commands){
 
-    command_grid.replaceChildren(); //remove the previous buttons
+    command_grid.replaceChildren(); //remove the previous existing buttons
 
-    commands.forEach(function (command){
+    commands.forEach(function (command){ // one button for each command in the array
 
-        // create button for CSS class
+        // mouse or keyboard button
         const command_button = document.createElement('button');
         command_button.type = 'button';
+        // button is connected to appearance from css file
         command_button.className = 'command_card';
 
-        //create description and command name
+        //show command name on card
         const name_text = document.createElement('strong');
         name_text.textContent = command.name;
 
@@ -74,6 +77,7 @@ function display_commands(commands){
         // append commasnd name to its button
         command_button.append(name_text);
 
+        // runs show_commands when the button is clicked 
         command_button.addEventListener('click', function(){
             show_command(command);
         });
@@ -82,28 +86,28 @@ function display_commands(commands){
         command_grid.append(command_button);
     });
 
-    search_status.textContent = commands.length + ' commands shown.';
+    search_status.textContent = commands.length + ' commands shown.'; // report number of commands displayed
 }
 
-async function load_commands() {
+async function load_commands() { // loads command data asynchronously per the project requirements
 
     try{
-        const response = await fetch('commands.json');
+        const response = await fetch('commands.json');  // request JSON file
 
-        if (!response.ok) { //error check
+        if (!response.ok) { //error check for missing file
             throw new Error('Failed to fetch commands');
         }
 
-        //converts json into JS objects
+        //converts json into JS objects and store in array
         all_commands = await response.json();
 
-        //use data for the grid 
+        //display commands 
         display_commands(all_commands);
 
 
     } catch (error) {
-        search_status.textContent = 'unable to load commands';
-        console.error(error);
+        search_status.textContent = 'unable to load commands'; // loading, parsing, display error 
+        console.error(error); // developer console message
     
     }
 }
@@ -111,25 +115,26 @@ async function load_commands() {
 // function runs when search field is interacted with
 search_input.addEventListener('input', function() {
 
-    // remove extra space
+    // remove extra space and ignores capitalization/lowercase
     const search_text = search_input.value.trim().toLowerCase();
 
-    const matching_commands = all_commands.filter(function(command) {
+    const matching_commands = all_commands.filter(function(command) { //creates array 
+        //checks if command matches search 
         const name_matches = command.name.toLowerCase().includes(search_text);
 
-        const description_matches = command.description
+        const description_matches = command.description // checks description for search text
             .toLowerCase()
             .includes(search_text);
         
-        return name_matches || description_matches;    
+        return name_matches || description_matches; // keeps command if search matches name or description keyword
     });
     
-    display_commands(matching_commands);
+    display_commands(matching_commands); // rebuilds grid using the commands that match
 
-    command_details.hidden = true;
-
-    if (matching_commands.length === 0) {
+    command_details.hidden = true; // hide details from the previous selection when search changes
+ 
+    if (matching_commands.length === 0) { // empty search results 
         search_status.textContent = 'No commands found.';
     }
 });
-load_commands();
+load_commands(); // load after deferred script

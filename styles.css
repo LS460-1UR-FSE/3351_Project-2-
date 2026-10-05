@@ -1,10 +1,13 @@
+
+
+
 *{
     box-sizing: border-box;
 }
 
-/*default page*/ 
 
-body{
+
+body{ /* pages default styling */
 
     margin: 0;
     background-color: #182230;
@@ -14,19 +17,19 @@ body{
     line-height: 1.5;
 }
 
-header {
+header { /* darker title area with centered text */ 
     background-color: #101720;
     padding: 25px;
     text-align: center;
 }
 
-h1{ /* extra space above header */
+h1{ /* remove top margin and add some space below */
 
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-/*content is centered and widith is limited for 21:9 ratios*/
+/*content is centered and widith is limited so it doesn't stretch too wide on larger screens*/
 main{
 
     max-width: 1000px;
@@ -40,7 +43,7 @@ label {
     margin-bottom: 8px;
 }
 
-/* search field fills available width */
+/* search field fills container and adds space around text */
 #search_input{
     width: 100%;
     padding: 12px;
@@ -51,12 +54,12 @@ label {
     font-size: 16px;
 }
 
-#search_input:focus-visible {
+#search_input:focus-visible { /* focus outline for keyboard nav */
     outline: 3px solid #9ac7ff;
     outline-offset: 3px;
 }
 
-#command_details {
+#command_details { /* separate command details section from grid with its own styling */
     margin-top: 30px;
     padding: 20px;
     background-color: #243244;
@@ -75,12 +78,12 @@ pre {
     overflow-wrap: anywhere;
 }
 
-code{
+code{ 
     font-family: Consolas, monospace;
 
 }
 
-footer{
+footer{ /* creator information at bottom */
 
     padding: 20px;
     text-align: center;
@@ -90,7 +93,7 @@ footer{
 
 
 
-.command_grid{
+.command_grid{ /* grid layout for command buttons 5 x 4 */
 
     display:grid;
 
@@ -113,18 +116,18 @@ footer{
 }
 
 
-.command_card strong {
+.command_card strong { /* command name inside the button */
     display: block;
     margin: 0;
     font-family: Consolas, monospace;
 }
 
-.command_card:hover { /* hightlight function */ 
+.command_card:hover { /* hightlight function for the buttons */ 
 
     background-color: #dddddd;
 }
 
-.command_card:focus-visible{ /* keyboard focus */
+.command_card:focus-visible{ /* focus outline for keyboard navigation */ 
     outline: 3px solid #2457a7;
     outline-offset: 3px;
 }
@@ -135,7 +138,7 @@ footer{
 }
 
 
-@media (max-width: 600px){
+@media (max-width: 600px){ /* responsive adjustments for smaller screens, as per the responsive design requirements*/
     main{
         padding: 15px;
     }
